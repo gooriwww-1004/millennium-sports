@@ -1,0 +1,72 @@
+{
+  "updated_at": "2026-05-28T06:23:52.057293+00:00",
+  "count": 6,
+  "odds": [
+    {
+      "home_team": "Nice",
+      "away_team": "Saint Etienne",
+      "commence_time": "2026-05-29T18:45:00Z",
+      "home_odds": 2.01,
+      "draw_odds": 3.29,
+      "away_odds": 4.0,
+      "bookmaker": "Pinnacle",
+      "league": "리그앙",
+      "league_key": "soccer_france_ligue_one"
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Arsenal",
+      "commence_time": "2026-05-30T16:00:00Z",
+      "home_odds": 3.22,
+      "draw_odds": 3.35,
+      "away_odds": 2.36,
+      "bookmaker": "Pinnacle",
+      "league": "챔피언스리그",
+      "league_key": "soccer_uefa_champs_league"
+    },
+    {
+      "home_team": "Cerro Porteño",
+      "away_team": "Sporting Cristal",
+      "commence_time": "2026-05-28T22:00:00Z",
+      "home_odds": 1.57,
+      "draw_odds": 3.69,
+      "away_odds": 6.42,
+      "bookmaker": "Pinnacle",
+      "league": "코파 리베르타도레스",
+      "league_key": "soccer_conmebol_copa_libertadores"
+    },
+    {
+      "home_team": "Palmeiras-SP",
+      "away_team": "Junior FC",
+      "commence_time": "2026-05-28T22:00:00Z",
+      "home_odds": 11.64,
+      "draw_odds": 6.12,
+      "away_odds": 1.22,
+      "bookmaker": "Pinnacle",
+      "league": "코파 리베르타도레스",
+      "league_key": "soccer_conmebol_copa_libertadores"
+    },
+    {
+      "home_team": "Cruzeiro",
+      "away_team": "Barcelona SC",
+      "commence_time": "2026-05-29T00:30:00Z",
+      "home_odds": 12.26,
+      "draw_odds": 5.72,
+      "away_odds": 1.2,
+      "bookmaker": "Pinnacle",
+      "league": "코파 리베르타도레스",
+      "league_key": "soccer_conmebol_copa_libertadores"
+    },
+    {
+      "home_team": "Boca Juniors",
+      "away_team": "Universidad Católica (CHI)",
+      "commence_time": "2026-05-29T00:30:00Z",
+      "home_odds": 1.45,
+      "draw_odds": 4.28,
+      "away_odds": 7.71,
+      "bookmaker": "Pinnacle",
+      "league": "코파 리베르타도레스",
+      "league_key": "soccer_conmebol_copa_libertadores"
+    }
+  ]
+}

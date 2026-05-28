@@ -1,0 +1,92 @@
+'use client'
+import { useState, useEffect } from 'react'
+
+interface NewsItem {
+  title: string; url: string; source: string; sport: string
+}
+interface Props {
+  sport: 'baseball' | 'soccer' | 'general'
+  title: string
+  accent: string
+  defaultOpen?: boolean
+}
+
+export default function NewsPanel({ sport, title, accent, defaultOpen = true }: Props) {
+  const [items, setItems]   = useState<NewsItem[]>([])
+  const [loading, setLoading] = useState(true)
+  const [open, setOpen]     = useState(defaultOpen)
+
+  useEffect(() => {
+    fetch(`/api/news?sport=${sport}`)
+      .then(r => r.json())
+      .then(d => { setItems(d.items || []); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [sport])
+
+  return (
+    <div style={{
+      background: 'var(--bg-card)',
+      border: `1px solid ${open ? accent + '44' : 'var(--border)'}`,
+      borderRadius: 14, overflow: 'hidden',
+      boxShadow: open ? `0 4px 20px ${accent}18` : 'var(--shadow)',
+      transition: 'all .25s'
+    }}>
+      {/* 헤더 — 클릭으로 펼치기/접기 */}
+      <button onClick={() => setOpen(!open)} style={{
+        width: '100%', display: 'flex', alignItems: 'center', gap: 8,
+        padding: '13px 16px', cursor: 'pointer',
+        background: open ? `linear-gradient(135deg, ${accent}0f 0%, transparent 100%)` : 'transparent',
+        border: 'none', borderBottom: open ? `1px solid var(--border)` : 'none',
+        transition: 'all .2s', textAlign: 'left'
+      }}>
+        <div style={{ width: 3, height: 16, background: accent, borderRadius: 2, flexShrink: 0 }}/>
+        <span style={{
+          flex: 1, fontSize: 12, fontWeight: 700, color: 'var(--t1)',
+          fontFamily: 'var(--font-mono)', letterSpacing: '.06em'
+        }}>{title}</span>
+        {/* 라이브 표시 */}
+        <div style={{
+          width: 7, height: 7, borderRadius: '50%',
+          background: accent, animation: 'pulse 2s ease-in-out infinite', flexShrink: 0
+        }}/>
+        {/* 접기 버튼 */}
+        <span style={{
+          fontSize: 10, color: 'var(--t3)', marginLeft: 6,
+          transform: open ? 'rotate(180deg)' : 'none',
+          transition: 'transform .22s', display: 'inline-block'
+        }}>▼</span>
+      </button>
+
+      {/* 링크 목록 */}
+      {open && (
+        <div style={{ overflowY: 'auto', maxHeight: 280, animation: 'fadeUp .2s ease' }}>
+          {loading ? (
+            [1,2,3,4].map(i => (
+              <div key={i} style={{
+                margin: '6px 12px', height: 28, borderRadius: 6,
+                background: 'linear-gradient(90deg,var(--bg-raised) 25%,var(--bg-input) 50%,var(--bg-raised) 75%)',
+                backgroundSize:'200% 100%', animation:'shimmer 1.4s infinite'
+              }}/>
+            ))
+          ) : items.map((item, i) => (
+            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              padding: '9px 16px', textDecoration: 'none', color: 'var(--t1)',
+              borderBottom: i < items.length - 1 ? '1px solid var(--border)' : 'none',
+              transition: 'background .15s'
+            }}
+            onMouseEnter={e => (e.currentTarget.style.background = `${accent}0d`)}
+            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+              <div style={{ width: 4, height: 4, borderRadius:'50%', background: accent, flexShrink: 0 }}/>
+              <span style={{
+                fontSize: 12, color: 'var(--t1)', lineHeight: 1.4, flex: 1,
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'
+              }}>{item.title}</span>
+              <span style={{ fontSize: 9, color: 'var(--t3)', fontFamily:'var(--font-mono)', flexShrink: 0 }}>↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}

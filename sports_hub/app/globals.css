@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* 밝은 중성 테마 — iframe 시인성 최우선 */
+  --bg-base:    #f0f2f7;
+  --bg-card:    #ffffff;
+  --bg-raised:  #e8ecf4;
+  --bg-input:   #dde2ee;
+  --t1: #1a1d2e; --t2: #4a5068; --t3: #8890a8;
+  --border:    rgba(0,0,0,0.07);
+  --border-md: rgba(0,0,0,0.12);
+  --shadow:    0 2px 16px rgba(0,0,0,0.08);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg-base); }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-base);
+  color: var(--t1);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)} }
+@keyframes shimmer { from{background-position:-200% 0}to{background-position:200% 0} }
+@keyframes fadeOut { from{opacity:1}to{opacity:0;pointer-events:none} }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
+@keyframes spin { to{transform:rotate(360deg)} }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-raised); }
+::-webkit-scrollbar-thumb { background: var(--border-md); border-radius: 2px; }
