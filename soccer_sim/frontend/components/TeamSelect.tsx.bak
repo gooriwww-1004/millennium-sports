@@ -6,10 +6,7 @@ import type { TeamInfo } from '@/lib/api'
 interface Props {
   label: string
   value: string
-  placeholder?: string
   onChange: (team: TeamInfo | null, name: string) => void
-  onOpen?: () => void
-  onClose?: () => void
 }
 
 const LEAGUES = [
@@ -136,10 +133,10 @@ export default function TeamSelect({ label, value, onChange }: Props) {
           <div style={{ padding: '12px 12px 8px' }}>
             <input
               className="input-field"
-			  value={query}
-			  onChange={e => handleInput(e.target.value)}
-			  placeholder={placeholder || '팀명 검색...'}  // ← 이렇게
-			  autoComplete="off"
+              placeholder="팀명 검색..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              autoFocus
               style={{ height: 40, fontSize: 13 }}
             />
           </div>
